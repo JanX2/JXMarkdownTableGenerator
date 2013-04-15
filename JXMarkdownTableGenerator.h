@@ -30,10 +30,12 @@
 	];
 #endif
 
-- (NSString *)stringForTableMatrix:(NSArray *)csvArray
+// Pass “NSNotFound” as the tableHeaderIndex if you don’t have a header row in your tableMatrix!
+
+- (NSString *)stringForTableMatrix:(NSArray *)tableMatrix
 				  tableHeaderIndex:(NSUInteger)tableHeaderIndex;
 
-- (NSData *)dataForTableMatrix:(NSArray *)csvArray
+- (NSData *)dataForTableMatrix:(NSArray *)tableMatrix
 			  tableHeaderIndex:(NSUInteger)tableHeaderIndex;
 
 @end

@@ -37,7 +37,18 @@
 - (NSString *)stringForTableMatrix:(NSArray *)tableMatrix
 				  tableHeaderIndex:(NSUInteger)tableHeaderIndex;
 {
-    // FIXME: Implement tableHeaderIndex support.
+	NSArray *preambleArray = nil;
+	NSArray *rowColArray = nil;
+	
+	if (tableHeaderIndex == NSNotFound) {
+		rowColArray = tableMatrix;
+	} else {
+		preambleArray = [tableMatrix subarrayWithRange:NSMakeRange(0, tableHeaderIndex)];
+
+		NSUInteger rowCount = tableMatrix.count - tableHeaderIndex;
+		rowColArray = [tableMatrix subarrayWithRange:NSMakeRange(tableHeaderIndex, rowCount)];
+	}
+	
 	NSUInteger columnCount = [[tableMatrix objectAtIndex:0] count];
 	NSMutableArray *escapedRows = [NSMutableArray arrayWithCapacity:tableMatrix.count];
 	
@@ -90,6 +101,11 @@
 	// Assemble rows and append to outString.
     NSMutableString *outString = [[NSMutableString alloc] init];
 
+	if (preambleArray != nil) {
+		[outString appendString:[preambleArray componentsJoinedByString:@"  \n"]]; // We force single lines instead of paragraphs.
+		[outString appendString:@"\n"];
+	}
+	
 	for (NSArray *rowArray in escapedRows) {
 		[outString appendString:@"|"];
 
