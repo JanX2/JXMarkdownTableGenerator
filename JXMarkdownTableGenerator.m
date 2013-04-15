@@ -49,13 +49,13 @@
 		rowColArray = [tableMatrix subarrayWithRange:NSMakeRange(tableHeaderIndex, rowCount)];
 	}
 	
-	NSUInteger columnCount = [[tableMatrix objectAtIndex:0] count];
-	NSMutableArray *escapedRows = [NSMutableArray arrayWithCapacity:tableMatrix.count];
+	NSUInteger columnCount = [[rowColArray objectAtIndex:0] count];
+	NSMutableArray *escapedRows = [NSMutableArray arrayWithCapacity:rowColArray.count];
 	
 	NSUInteger *columnWidths = calloc(columnCount, sizeof(NSUInteger));
 	
 	// Escape each cell’s content.
-	for (NSMutableArray *columns in tableMatrix) {
+	for (NSMutableArray *columns in rowColArray) {
 		NSMutableArray *rowArray = [NSMutableArray arrayWithCapacity:columnCount];
 		
 		int i = 0;
