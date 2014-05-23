@@ -56,11 +56,11 @@
 	NSUInteger *columnWidths = calloc(columnCount, sizeof(NSUInteger));
 	
 	// Escape each cell’s content.
-	for (NSMutableArray *columns in rowColArray) {
+	for (NSMutableArray *rows in rowColArray) {
 		NSMutableArray *rowArray = [NSMutableArray arrayWithCapacity:columnCount];
 		
 		size_t i = 0;
-		for (NSString *cellString in columns) {
+		for (NSString *cellString in rows) {
 			NSMutableString *tmpString = [NSMutableString stringWithString:cellString];
 			
 			[self escapeStringForMarkdownTable:tmpString];
