@@ -59,7 +59,7 @@
 	for (NSMutableArray *columns in rowColArray) {
 		NSMutableArray *rowArray = [NSMutableArray arrayWithCapacity:columnCount];
 		
-		int i = 0;
+		size_t i = 0;
 		for (NSString *cellString in columns) {
 			NSMutableString *tmpString = [NSMutableString stringWithString:cellString];
 			
@@ -79,8 +79,8 @@
 	}
 	
 	NSMutableArray *dividerRowArray = [NSMutableArray arrayWithCapacity:columnCount];
-	int columnCountInt = (int)columnCount;
-	for (int i = 0; i < columnCountInt; i++) {
+	size_t columnCountInt = (size_t)columnCount;
+	for (size_t i = 0; i < columnCountInt; i++) {
 		NSString *columnDivider = [@"" stringByPaddingToLength:columnWidths[i]
 													withString:@"-"
 											   startingAtIndex:0];
@@ -110,7 +110,7 @@
 	for (NSArray *rowArray in escapedRows) {
 		[outString appendString:@"|"];
 
-		int i = 0;
+		size_t i = 0;
 		for (NSString *escapedString in rowArray) {
 			NSString *paddedString = [escapedString stringByPaddingToLength:columnWidths[i]
 																 withString:@" "
