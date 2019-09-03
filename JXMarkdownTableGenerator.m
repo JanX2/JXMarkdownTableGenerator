@@ -40,12 +40,15 @@
 	NSArray *preambleArray = nil;
 	NSArray *rowColArray = nil;
 	
+    NSUInteger tableMatrixCount = tableMatrix.count;
+    if (tableMatrixCount == 0) { return nil; }
+
 	if (tableHeaderIndex == NSNotFound) {
 		rowColArray = tableMatrix;
 	} else {
 		preambleArray = [tableMatrix subarrayWithRange:NSMakeRange(0, tableHeaderIndex)];
 
-		NSUInteger rowCount = tableMatrix.count - tableHeaderIndex;
+		NSUInteger rowCount = tableMatrixCount - tableHeaderIndex;
 		rowColArray = [tableMatrix subarrayWithRange:NSMakeRange(tableHeaderIndex, rowCount)];
 	}
 	
@@ -134,7 +137,7 @@
 	NSString *outString = [self stringForTableMatrix:csvArray
 									tableHeaderIndex:tableHeaderIndex];
     
-	NSData *outData = [outString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *outData = outString ? [outString dataUsingEncoding:NSUTF8StringEncoding] : nil;
 	
     return outData;
 }

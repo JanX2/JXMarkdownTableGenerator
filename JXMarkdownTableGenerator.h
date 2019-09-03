@@ -32,6 +32,7 @@
 
 // Pass “NSNotFound” as the tableHeaderIndex if you don’t have a header row in your tableMatrix!
 
+// The following will return `nil` on failure or empty input.
 - (NSString *)stringForTableMatrix:(NSArray *)tableMatrix
 				  tableHeaderIndex:(NSUInteger)tableHeaderIndex;
 
